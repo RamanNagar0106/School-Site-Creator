@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { CheckCircle2, Crown, Star, Wallet } from "lucide-react";
+import { BookOpen, CheckCircle2, Crown, Star, Wallet } from "lucide-react";
 
 export function About() {
   return (
@@ -98,6 +98,14 @@ export function About() {
                 <div className="text-xs font-semibold uppercase tracking-widest text-secondary mb-1">Treasurer</div>
                 <div className="font-serif text-xl font-bold text-primary">Mohan Ji Nagar</div>
               </div>
+
+              <div className="bg-white border border-slate-100 rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-secondary/20 mx-auto mb-4">
+                  <BookOpen className="h-7 w-7 text-primary" />
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-widest text-secondary mb-1">Secretary</div>
+                <div className="font-serif text-xl font-bold text-primary">Jagdish Ji Nagar</div>
+              </div>
             </div>
           </motion.div>
 
@@ -112,7 +120,7 @@ export function About() {
                 "Education is the foundation upon which we build our future. At M.B. Convent, we don't just teach subjects; we shape character. We demand discipline because we care about the adults our students will become. Our doors are open to those who are ready to learn, to work hard, and to strive for excellence."
               </div>
               <div className="pt-4 border-t border-white/20 inline-block">
-                <div className="font-bold text-lg tracking-wide uppercase">Dr. A. K. Sharma</div>
+                <div className="font-bold text-lg tracking-wide uppercase">Mr. Om Ji Gour</div>
                 <div className="text-secondary text-sm">Principal, M. B. Convent H. S. School</div>
               </div>
             </div>

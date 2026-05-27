@@ -67,7 +67,7 @@ export function Home() {
               Array(4).fill(0).map((_, i) => <Skeleton key={i} className="h-32 w-full rounded-lg" />)
             ) : stats ? (
               <>
-                <StatCard icon={<Users className="h-8 w-8" />} value={stats.totalStudents.toString()} label="Total Students" />
+                <StatCard icon={<Users className="h-8 w-8" />} value={`${stats.totalStudents.toLocaleString()}+`} label="Students Passed Out" />
                 <StatCard icon={<GraduationCap className="h-8 w-8" />} value={stats.totalFaculty.toString()} label="Expert Faculty" />
                 <StatCard icon={<Award className="h-8 w-8" />} value={stats.yearsOfExcellence.toString() + "+"} label="Years of Excellence" />
                 <StatCard icon={<BookOpen className="h-8 w-8" />} value={stats.passRate.toString() + "%"} label="Pass Rate" />

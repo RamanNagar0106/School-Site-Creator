@@ -12,7 +12,7 @@ router.get("/stats", async (_req, res): Promise<void> => {
   void newsCount;
 
   res.json(GetStatsResponse.parse({
-    totalStudents: 1240,
+    totalStudents: 2500,
     totalFaculty: facultyCount ?? 0,
     yearsOfExcellence: 17,
     passRate: 98,
