@@ -35,7 +35,7 @@ export function Home() {
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-sm font-medium text-secondary backdrop-blur-sm">
               <Award className="h-4 w-4" />
-              <span>Tradition of Excellence Since 1985</span>
+              <span>Tradition of Excellence Since 2009</span>
             </div>
             <h1 className="font-serif text-5xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
               Knowledge, Discipline, <span className="text-secondary">Character</span>

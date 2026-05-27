@@ -31,7 +31,7 @@ export function About() {
               <h2 className="font-serif text-3xl font-bold text-primary">Our History</h2>
               <div className="h-1 w-16 bg-secondary rounded-full"></div>
               <p className="text-slate-600 leading-relaxed text-lg">
-                Founded in 1985, M.B. Convent High School was established with a clear vision: to provide accessible, high-quality education rooted in strong moral values. 
+                Founded in 2009, M.B. Convent High School was established with a clear vision: to provide accessible, high-quality education rooted in strong moral values. 
               </p>
               <p className="text-slate-600 leading-relaxed">
                 What began as a small institution with just 50 students has now grown into a premier educational establishment. Over the decades, we have continuously adapted to modern educational methodologies while remaining steadfast in our commitment to discipline and character building.

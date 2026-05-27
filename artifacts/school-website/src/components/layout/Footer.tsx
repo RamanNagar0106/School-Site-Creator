@@ -17,7 +17,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm text-slate-400">
-              A place of tradition, discipline, and genuine care for students' futures. Building leaders since 1985.
+              A place of tradition, discipline, and genuine care for students' futures. Building leaders since 2009.
             </p>
           </div>
 
