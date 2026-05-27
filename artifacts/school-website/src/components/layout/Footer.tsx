@@ -46,7 +46,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex gap-3">
                 <MapPin className="h-5 w-5 shrink-0 text-secondary" />
-                <span>123 Education Lane, Knowledge Park, City, State 123456</span>
+                <span>Maa Bizsan Square, Bhaiswa Mata, Sarangpur, Sandawata Main Road</span>
               </li>
               <li className="flex gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-secondary" />

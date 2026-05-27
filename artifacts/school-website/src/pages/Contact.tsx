@@ -80,7 +80,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold text-primary mb-1 text-lg">Our Campus</h3>
-                    <p className="text-slate-600">123 Education Lane, Knowledge Park,<br />City, State 123456</p>
+                    <p className="text-slate-600">Maa Bizsan Square, Bhaiswa Mata,<br />Sarangpur, Sandawata Main Road</p>
                   </div>
                 </div>
 
