@@ -13,7 +13,7 @@ export function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-lg font-bold tracking-tight text-white">M.B. Convent</span>
-                <span className="text-[10px] font-medium uppercase tracking-wider text-secondary">High School</span>
+                <span className="text-[10px] font-medium uppercase tracking-wider text-secondary">School</span>
               </div>
             </Link>
             <p className="text-sm text-slate-400">
