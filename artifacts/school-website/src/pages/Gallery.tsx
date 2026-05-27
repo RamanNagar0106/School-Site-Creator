@@ -20,7 +20,7 @@ export function Gallery() {
       <div className="bg-primary py-20 text-white text-center">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-4xl font-bold md:text-5xl lg:text-6xl mb-4">Photo Gallery</h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">Glimpses of life, learning, and celebrations at M.B. Convent High School.</p>
+          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">Glimpses of life, learning, and celebrations at M. B. Convent H. S. School.</p>
         </div>
       </div>
 

@@ -46,7 +46,7 @@ export function Chatbot() {
     setMessages([
       {
         role: "assistant",
-        content: "Hello! I am the Convent Assistant for M.B. Convent H. School. How can I help you today? You can ask me about admissions, academics, timings, or anything else about our school.",
+        content: "Hello! I am the Convent Assistant for M. B. Convent H. S. School. How can I help you today? You can ask me about admissions, academics, timings, or anything else about our school.",
       },
     ]);
   }
@@ -181,7 +181,7 @@ export function Chatbot() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">Convent Assistant</p>
-                <p className="text-xs text-primary-foreground/70">M.B. Convent H. School</p>
+                <p className="text-xs text-primary-foreground/70">M. B. Convent H. S. School</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -210,7 +210,7 @@ export function Chatbot() {
               <div className="flex flex-col items-center justify-center h-full text-center py-8 text-slate-400">
                 <Bot className="h-10 w-10 mb-3 text-slate-300" />
                 <p className="text-sm font-medium">Ask me anything about</p>
-                <p className="text-sm">M.B. Convent H. School</p>
+                <p className="text-sm">M. B. Convent H. S. School</p>
               </div>
             )}
             <div className="space-y-4">

@@ -27,7 +27,7 @@ export function Navbar() {
               <BookOpen className="h-6 w-6" />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-tight text-white sm:text-2xl">M.B. Convent</span>
+              <span className="font-serif text-xl font-bold tracking-tight text-white sm:text-2xl">M. B. Convent H. S.</span>
               <span className="text-xs font-medium uppercase tracking-wider text-secondary">High School</span>
             </div>
           </Link>

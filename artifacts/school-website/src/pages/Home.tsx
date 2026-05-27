@@ -41,7 +41,7 @@ export function Home() {
               Knowledge, Discipline, <span className="text-secondary">Character</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-primary-foreground/90 md:text-xl">
-              Welcome to M.B. Convent High School, where we nurture young minds to become tomorrow's leaders through a blend of traditional values and modern education.
+              Welcome to M. B. Convent H. S. School, where we nurture young minds to become tomorrow's leaders through a blend of traditional values and modern education.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row pt-4">
               <Link href="/admissions">
@@ -90,7 +90,7 @@ export function Home() {
               <h2 className="font-serif text-4xl font-bold text-primary">A Legacy of Learning</h2>
               <div className="h-1 w-20 bg-secondary rounded-full"></div>
               <p className="text-lg text-slate-600 leading-relaxed">
-                At M.B. Convent High School, we believe that education is not just about academic excellence, but about building character and fostering a lifelong love for learning.
+                At M. B. Convent H. S. School, we believe that education is not just about academic excellence, but about building character and fostering a lifelong love for learning.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 Our institution stands as a pillar of discipline and values, guiding students through their formative years with care, rigor, and dedication. We take pride in our highly qualified faculty and our comprehensive curriculum designed to prepare students for the challenges of tomorrow.

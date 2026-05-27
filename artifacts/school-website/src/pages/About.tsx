@@ -8,7 +8,7 @@ export function About() {
       <div className="bg-primary py-20 text-white text-center">
         <div className="container mx-auto px-4">
           <h1 className="font-serif text-4xl font-bold md:text-5xl lg:text-6xl mb-4">About Us</h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">Discover the history, vision, and values that make M.B. Convent High School a beacon of educational excellence.</p>
+          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">Discover the history, vision, and values that make M. B. Convent H. S. School a beacon of educational excellence.</p>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ export function About() {
               <h2 className="font-serif text-3xl font-bold text-primary">Our History</h2>
               <div className="h-1 w-16 bg-secondary rounded-full"></div>
               <p className="text-slate-600 leading-relaxed text-lg">
-                Founded in 2009, M.B. Convent High School was established with a clear vision: to provide accessible, high-quality education rooted in strong moral values. 
+                Founded in 2009, M. B. Convent H. S. School was established with a clear vision: to provide accessible, high-quality education rooted in strong moral values. 
               </p>
               <p className="text-slate-600 leading-relaxed">
                 What began as a small institution with just 50 students has now grown into a premier educational establishment. Over the decades, we have continuously adapted to modern educational methodologies while remaining steadfast in our commitment to discipline and character building.
@@ -75,7 +75,7 @@ export function About() {
               </div>
               <div className="pt-4 border-t border-white/20 inline-block">
                 <div className="font-bold text-lg tracking-wide uppercase">Dr. A. K. Sharma</div>
-                <div className="text-secondary text-sm">Principal, M.B. Convent High School</div>
+                <div className="text-secondary text-sm">Principal, M. B. Convent H. S. School</div>
               </div>
             </div>
           </div>

@@ -212,7 +212,7 @@ export function Contact() {
           <div className="bg-white/90 backdrop-blur p-4 rounded-lg shadow-sm text-center">
             <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
             <p className="font-medium text-slate-900">Interactive Map Integration</p>
-            <p className="text-sm text-slate-500">M.B. Convent High School Location</p>
+            <p className="text-sm text-slate-500">M. B. Convent H. S. School Location</p>
           </div>
         </div>
       </section>
