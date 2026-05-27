@@ -13,6 +13,7 @@ import { NewsDetail } from "./pages/NewsDetail";
 import { Gallery } from "./pages/Gallery";
 import { Faculty } from "./pages/Faculty";
 import { Contact } from "./pages/Contact";
+import { Chatbot } from "./components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ function App() {
           <Router />
         </WouterRouter>
         <Toaster />
+        <Chatbot />
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -6,6 +6,7 @@ import galleryRouter from "./gallery";
 import admissionsRouter from "./admissions";
 import contactsRouter from "./contacts";
 import statsRouter from "./stats";
+import openaiRouter from "./openai";
 
 const router: IRouter = Router();
 
@@ -16,5 +17,6 @@ router.use(galleryRouter);
 router.use(admissionsRouter);
 router.use(contactsRouter);
 router.use(statsRouter);
+router.use(openaiRouter);
 
 export default router;
