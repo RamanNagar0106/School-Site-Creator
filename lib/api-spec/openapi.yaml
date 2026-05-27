@@ -3,13 +3,23 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: API specification for M.B. Convent H. School website
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: news
+    description: News and events
+  - name: faculty
+    description: Faculty and staff
+  - name: gallery
+    description: Gallery images
+  - name: admissions
+    description: Admissions enquiries
+  - name: contact
+    description: Contact messages
 paths:
   /healthz:
     get:
@@ -24,6 +34,141 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /news:
+    get:
+      operationId: listNews
+      tags: [news]
+      summary: List all news and events
+      responses:
+        "200":
+          description: List of news items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NewsItem"
+    post:
+      operationId: createNews
+      tags: [news]
+      summary: Create a news item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsItem"
+
+  /news/{id}:
+    get:
+      operationId: getNews
+      tags: [news]
+      summary: Get a news item by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: News item
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NewsItem"
+        "404":
+          description: Not found
+
+  /faculty:
+    get:
+      operationId: listFaculty
+      tags: [faculty]
+      summary: List all faculty members
+      responses:
+        "200":
+          description: List of faculty
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FacultyMember"
+
+  /gallery:
+    get:
+      operationId: listGallery
+      tags: [gallery]
+      summary: List gallery images
+      responses:
+        "200":
+          description: List of gallery images
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GalleryImage"
+
+  /admissions:
+    post:
+      operationId: submitAdmission
+      tags: [admissions]
+      summary: Submit an admissions enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdmissionInput"
+      responses:
+        "201":
+          description: Enquiry submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdmissionRecord"
+
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit a contact message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Message sent
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactRecord"
+
+  /stats:
+    get:
+      operationId: getStats
+      tags: [health]
+      summary: Get school summary statistics
+      responses:
+        "200":
+          description: School stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolStats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +179,159 @@ components:
       required:
         - status
 
+    NewsItem:
+      type: object
+      required: [id, title, summary, date, category]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        summary:
+          type: string
+        content:
+          type: ["string", "null"]
+        date:
+          type: string
+        category:
+          type: string
+        imageUrl:
+          type: ["string", "null"]
+
+    NewsInput:
+      type: object
+      required: [title, summary, date, category]
+      properties:
+        title:
+          type: string
+        summary:
+          type: string
+        content:
+          type: string
+        date:
+          type: string
+        category:
+          type: string
+        imageUrl:
+          type: string
+
+    FacultyMember:
+      type: object
+      required: [id, name, subject, qualification, experience]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        subject:
+          type: string
+        qualification:
+          type: string
+        experience:
+          type: string
+        bio:
+          type: ["string", "null"]
+        imageUrl:
+          type: ["string", "null"]
+        designation:
+          type: string
+
+    GalleryImage:
+      type: object
+      required: [id, title, imageUrl, category]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        description:
+          type: ["string", "null"]
+
+    AdmissionInput:
+      type: object
+      required: [studentName, parentName, email, phone, gradeApplying]
+      properties:
+        studentName:
+          type: string
+        parentName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        gradeApplying:
+          type: string
+        message:
+          type: string
+
+    AdmissionRecord:
+      type: object
+      required: [id, studentName, parentName, email, phone, gradeApplying, createdAt]
+      properties:
+        id:
+          type: integer
+        studentName:
+          type: string
+        parentName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        gradeApplying:
+          type: string
+        message:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+
+    ContactInput:
+      type: object
+      required: [name, email, subject, message]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        subject:
+          type: string
+        message:
+          type: string
+
+    ContactRecord:
+      type: object
+      required: [id, name, email, subject, message, createdAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        subject:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+
+    SchoolStats:
+      type: object
+      required: [totalStudents, totalFaculty, yearsOfExcellence, passRate]
+      properties:
+        totalStudents:
+          type: integer
+        totalFaculty:
+          type: integer
+        yearsOfExcellence:
+          type: integer
+        passRate:
+          type: integer

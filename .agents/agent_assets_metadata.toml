@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "dzPE_7R0un9qQ9MZoIK_G"
+uri = "file://artifacts/school-website/public/images/hero.png"
+type = "image"
+title = "school building exterior morning"
+
+[[generated]]
+id = "xgsI7kzQw0T4clEz2sGpW"
+uri = "file://artifacts/school-website/public/images/about.png"
+type = "image"
+title = "students in morning assembly"
+
+[[generated]]
+id = "HoMEKQWsD4Y0ytNeOOqEL"
+uri = "file://artifacts/school-website/public/images/classroom.png"
+type = "image"
+title = "students in classroom"
