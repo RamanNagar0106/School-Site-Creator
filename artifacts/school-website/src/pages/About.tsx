@@ -1,6 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Crown, Star, Wallet } from "lucide-react";
 
 export function About() {
   return (
@@ -62,6 +62,44 @@ export function About() {
               </p>
             </div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl font-bold text-primary mb-3">Management Committee</h2>
+              <div className="h-1 w-16 bg-secondary rounded-full mx-auto"></div>
+              <p className="text-slate-500 mt-4">The visionary leadership guiding our institution forward</p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="bg-white border border-slate-100 rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto mb-4">
+                  <Crown className="h-7 w-7 text-primary" />
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-widest text-secondary mb-1">Director &amp; Chairman</div>
+                <div className="font-serif text-xl font-bold text-primary">Mahesh Ji Patel</div>
+              </div>
+
+              <div className="bg-white border border-slate-100 rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-secondary/20 mx-auto mb-4">
+                  <Star className="h-7 w-7 text-primary" />
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-widest text-secondary mb-1">Vice Chairman</div>
+                <div className="font-serif text-xl font-bold text-primary">L.N. Nagar</div>
+              </div>
+
+              <div className="bg-white border border-slate-100 rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition-shadow">
+                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto mb-4">
+                  <Wallet className="h-7 w-7 text-primary" />
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-widest text-secondary mb-1">Treasurer</div>
+                <div className="font-serif text-xl font-bold text-primary">Mohan Ji Nagar</div>
+              </div>
+            </div>
+          </motion.div>
 
           <div className="bg-primary text-white rounded-3xl p-8 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 opacity-10 pointer-events-none">
