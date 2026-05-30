@@ -8,6 +8,7 @@ import contactsRouter from "./contacts";
 import statsRouter from "./stats";
 import openaiRouter from "./openai";
 import adminRouter from "./admin";
+import paymentsRouter from "./payments";
 
 const router: IRouter = Router();
 
@@ -19,6 +20,7 @@ router.use(admissionsRouter);
 router.use(contactsRouter);
 router.use(statsRouter);
 router.use(openaiRouter);
+router.use(paymentsRouter);
 router.use(adminRouter);
 
 export default router;

@@ -16,6 +16,7 @@ import { Contact } from "./pages/Contact";
 import { Chatbot } from "./components/Chatbot";
 import { AdminLogin } from "./pages/admin/AdminLogin";
 import { AdminDashboard } from "./pages/admin/AdminDashboard";
+import { FeePayment } from "./pages/FeePayment";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ function Router() {
       <Route path="/gallery" component={Gallery} />
       <Route path="/faculty" component={Faculty} />
       <Route path="/contact" component={Contact} />
+      <Route path="/fee-payment" component={FeePayment} />
       <Route path="/admin" component={AdminLogin} />
       <Route path="/admin/dashboard" component={AdminDashboard} />
       <Route component={NotFound} />

@@ -1,6 +1,6 @@
 import { Router, type IRouter, type Request, type Response, type NextFunction } from "express";
 import { eq } from "drizzle-orm";
-import { db, newsTable, facultyTable, galleryTable, contactsTable, admissionsTable } from "@workspace/db";
+import { db, newsTable, facultyTable, galleryTable, contactsTable, admissionsTable, paymentsTable } from "@workspace/db";
 import { z } from "zod";
 
 const router: IRouter = Router();
@@ -156,6 +156,28 @@ router.get("/admin/contacts", requireAdmin, async (_req, res): Promise<void> => 
 router.get("/admin/admissions", requireAdmin, async (_req, res): Promise<void> => {
   const admissions = await db.select().from(admissionsTable).orderBy(admissionsTable.createdAt);
   res.json(admissions);
+});
+
+// ── Payments ──────────────────────────────────────────────────────────────────
+
+router.get("/admin/payments", requireAdmin, async (_req, res): Promise<void> => {
+  const payments = await db.select().from(paymentsTable).orderBy(paymentsTable.createdAt);
+  res.json(payments);
+});
+
+router.patch("/admin/payments/:id/status", requireAdmin, async (req, res): Promise<void> => {
+  const id = Number(req.params.id);
+  const { status, remarks } = req.body as { status: string; remarks?: string };
+  if (!["pending", "verified", "rejected"].includes(status)) {
+    res.status(400).json({ error: "Invalid status" });
+    return;
+  }
+  const [item] = await db.update(paymentsTable)
+    .set({ status, ...(remarks !== undefined ? { remarks } : {}) })
+    .where(eq(paymentsTable.id, id))
+    .returning();
+  if (!item) { res.status(404).json({ error: "Not found" }); return; }
+  res.json(item);
 });
 
 export default router;

@@ -37,7 +37,7 @@ export function Footer() {
               <li><Link href="/news" className="hover:text-secondary transition-colors">News & Events</Link></li>
               <li><Link href="/gallery" className="hover:text-secondary transition-colors">Gallery</Link></li>
               <li><Link href="/contact" className="hover:text-secondary transition-colors">Contact Us</Link></li>
-              <li><Link href="#" className="hover:text-secondary transition-colors">Student Portal</Link></li>
+              <li><Link href="/fee-payment" className="hover:text-secondary transition-colors">Fee Payment</Link></li>
             </ul>
           </div>
 

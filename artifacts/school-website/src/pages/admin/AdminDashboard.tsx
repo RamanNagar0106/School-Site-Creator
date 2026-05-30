@@ -8,10 +8,10 @@ import { Badge } from "@/components/ui/badge";
 import {
   BookOpen, LogOut, Newspaper, GraduationCap, Image as ImageIcon,
   MessageSquare, Plus, Pencil, Trash2, X, Check, ChevronDown,
-  Users, Calendar, Mail, Phone,
+  Users, Calendar, Mail, Phone, IndianRupee, CheckCircle2, XCircle, Clock,
 } from "lucide-react";
 
-type Tab = "news" | "faculty" | "gallery" | "enquiries";
+type Tab = "news" | "faculty" | "gallery" | "enquiries" | "payments";
 
 const apiFetch = (path: string, options?: RequestInit) =>
   fetch(`/api${path}`, { credentials: "include", ...options });
@@ -438,6 +438,103 @@ function Empty({ label }: { label: string }) {
   );
 }
 
+// ── Payments Tab ──────────────────────────────────────────────────────────────
+
+type PaymentItem = {
+  id: number; studentName: string; studentClass: string; parentName: string;
+  email: string; phone: string; feeType: string; amount: string;
+  transactionId: string; paymentMethod: string; paymentDate: string;
+  status: string; remarks: string | null; createdAt: string;
+};
+
+function PaymentsTab() {
+  const [items, setItems] = useState<PaymentItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState<number | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const r = await apiFetch("/admin/payments");
+    setItems((await r.json() as PaymentItem[]).reverse());
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { void load(); }, [load]);
+
+  const updateStatus = async (id: number, status: string) => {
+    setUpdating(id);
+    await apiFetch(`/admin/payments/${id}/status`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status }),
+    });
+    await load();
+    setUpdating(null);
+  };
+
+  const statusBadge = (status: string) => {
+    if (status === "verified") return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-3 w-3" />Verified</span>;
+    if (status === "rejected") return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700"><XCircle className="h-3 w-3" />Rejected</span>;
+    return <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700"><Clock className="h-3 w-3" />Pending</span>;
+  };
+
+  if (loading) return <div className="flex justify-center py-16"><div className="animate-spin h-8 w-8 border-4 border-primary/20 border-t-primary rounded-full" /></div>;
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-serif text-2xl font-bold text-primary">Payment Confirmations</h2>
+        <Badge variant="outline" className="text-sm">{items.length} total</Badge>
+      </div>
+      {items.length === 0 ? <Empty label="No payment confirmations yet." /> : (
+        <div className="space-y-3">
+          {items.map(p => (
+            <div key={p.id} className={`rounded-xl border shadow-sm p-4 ${p.status === "verified" ? "border-emerald-100 bg-emerald-50/30" : p.status === "rejected" ? "border-red-100 bg-red-50/20" : "border-slate-100 bg-white"}`}>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <IndianRupee className="h-5 w-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 flex-wrap mb-1">
+                    <span className="font-semibold text-slate-800">{p.studentName}</span>
+                    <Badge variant="outline" className="text-xs">{p.studentClass}</Badge>
+                    {statusBadge(p.status)}
+                    <span className="text-xs text-slate-400 ml-auto">{new Date(p.createdAt).toLocaleDateString("en-IN")}</span>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm text-slate-600 mb-3">
+                    <span>Parent: <strong>{p.parentName}</strong></span>
+                    <span className="flex items-center gap-1"><Phone className="h-3 w-3" />{p.phone}</span>
+                    <span className="flex items-center gap-1"><Mail className="h-3 w-3" />{p.email}</span>
+                    <span>Fee: <strong>{p.feeType}</strong></span>
+                    <span>Amount: <strong>₹{p.amount}</strong></span>
+                    <span>Method: <strong>{p.paymentMethod}</strong></span>
+                    <span>Txn ID: <strong className="font-mono text-xs">{p.transactionId}</strong></span>
+                    <span>Date: <strong>{p.paymentDate}</strong></span>
+                  </div>
+                  {p.status === "pending" && (
+                    <div className="flex gap-2 mt-2">
+                      <Button size="sm" className="gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white h-8"
+                        disabled={updating === p.id}
+                        onClick={() => void updateStatus(p.id, "verified")}>
+                        <CheckCircle2 className="h-3.5 w-3.5" /> Verify
+                      </Button>
+                      <Button size="sm" variant="outline" className="gap-1.5 border-red-200 text-red-600 hover:bg-red-50 h-8"
+                        disabled={updating === p.id}
+                        onClick={() => void updateStatus(p.id, "rejected")}>
+                        <XCircle className="h-3.5 w-3.5" /> Reject
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Main Dashboard ────────────────────────────────────────────────────────────
 
 const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
@@ -445,6 +542,7 @@ const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
   { id: "faculty", label: "Faculty", icon: <GraduationCap className="h-4 w-4" /> },
   { id: "gallery", label: "Gallery", icon: <ImageIcon className="h-4 w-4" /> },
   { id: "enquiries", label: "Enquiries", icon: <MessageSquare className="h-4 w-4" /> },
+  { id: "payments", label: "Payments", icon: <IndianRupee className="h-4 w-4" /> },
 ];
 
 export function AdminDashboard() {
@@ -519,6 +617,7 @@ export function AdminDashboard() {
           {tab === "faculty" && <FacultyTab />}
           {tab === "gallery" && <GalleryTab />}
           {tab === "enquiries" && <EnquiriesTab />}
+          {tab === "payments" && <PaymentsTab />}
         </div>
       </div>
     </div>
